@@ -1,0 +1,10 @@
+*.o
+*.swp
+*.gch
+*.nfs*
+*.dSYM
+.DS_Store
+README.md
+a.out
+client
+server
