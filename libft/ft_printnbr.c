@@ -6,7 +6,7 @@
 /*   By: tsiguenz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 13:42:21 by tsiguenz          #+#    #+#             */
-/*   Updated: 2021/12/14 16:12:03 by tsiguenz         ###   ########.fr       */
+/*   Updated: 2022/02/08 09:26:01 by tsiguenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_printunsigned(unsigned int nb)
 	int	ret;
 
 	ret = 0;
-	if (nb >= 0 && nb <= 9)
+	if (nb <= 9)
 		ret += ft_printchar(nb + '0');
 	else
 	{
@@ -59,13 +59,8 @@ int	ft_printnbr_base(unsigned int nb, int maj)
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
-	if (nb >= 0 && nb <= (unsigned int)ft_strlen(base) - 1)
+	if (nb <= (unsigned int)ft_strlen(base) - 1)
 		ret += ft_printchar(base[nb]);
-	else if (nb < 0)
-	{
-		ret += (int) write(1, "-", 1);
-		ret += ft_printnbr_base(-nb, maj);
-	}
 	else
 	{
 		ret += ft_printnbr_base(nb / ft_strlen(base), maj);
@@ -81,7 +76,7 @@ int	ft_printaddress(unsigned long nb)
 
 	ret = 0;
 	base = "0123456789abcdef";
-	if (nb >= 0 && nb <= 15)
+	if (nb <= 15)
 		ret += ft_printchar(base[nb]);
 	else
 	{
