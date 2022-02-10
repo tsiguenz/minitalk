@@ -1,10 +1,11 @@
 *.o
+*.a
 *.swp
 *.gch
 *.nfs*
 *.dSYM
+*obj/
 .DS_Store
-README.md
 a.out
 client
 server
