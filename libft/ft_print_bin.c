@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_print_bin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsiguenz <tsiguenz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,54 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-char	*ft_addc(char *str, char *c)
+void	ft_print_bin(char *str, char c)
 {
-	char	*tmp;
+	int	i;
 
-	tmp = ft_strjoin(str, c);
-	free(str);
-	return (tmp);	
-}
-
-void	ft_handler(int sig)
-{
-	static int	i;
-	static char	*str;
-	static char	c;
-
-	if (sig == SIGUSR2)
+	i = 0;
+	write(1, str, ft_strlen(str));
+	while (i < 8)
 	{
-		c <<= 1;
-		c |= 0x01;
-	}
-	else if (sig == SIGUSR1)
-		c <<= 1;
-	i++;
-	ft_print_bin("bin = ", c);
-	if (i >= 8)
-	{
-		//ft_print_bin("bin = ", c);
-		if (c)
-			str = ft_addc(str, &c);
+		if (0x80 & c << i)
+			write(1, "1 ", 2);
 		else
-		{
-			ft_printf("%s\n", str);
-			free(str);
-		}
-		i = 0;
-		c = 0;
+			write(1, "0 ", 2);
+		i++;
 	}
-}
-
-int	main(void)
-{
-	ft_printf("%d\n", getpid());
-	if (signal(SIGUSR1, ft_handler) == SIG_ERR
-		|| signal(SIGUSR2, ft_handler) == SIG_ERR)
-		return (ft_printf(CLI_SIG_ERR));
-	while (42)
-		pause();
-	return (0);
+	write(1, "\n", 1);
 }

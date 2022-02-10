@@ -65,7 +65,8 @@ SRC_NAME = 	ft_atoi.c \
 			get_next_line_utils.c \
 			ft_printf.c \
 			ft_printstr.c \
-			ft_printnbr.c
+			ft_printnbr.c \
+			ft_print_bin.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 CC = gcc

@@ -71,4 +71,5 @@ int			ft_gnl(int fd, char **dest);
 int			ft_max(int a, int b);
 int			ft_abs(int a);
 int			ft_printf(const char *format, ...);
+void		ft_print_bin(char *str, char c);
 #endif //LIBFT_H

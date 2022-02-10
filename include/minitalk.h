@@ -10,12 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef MINITALK_H
+# define MINITALK_H
+# include <stdio.h>
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "libft.h"
-#define ERROR_KILL "Client : Kill return bad value"
-#define ERROR_NULL_MESSAGE "Client : Message is null"
-#define BAD_ARGUMENT "Client : Bad number of arguments (./client [PID] [MSG])"
+# include <sys/types.h>
+# include <unistd.h>
+# include <signal.h>
+# include "libft.h"
+
+# define ERROR_KILL "Client : Kill return bad value\n"
+# define ERROR_NULL_MESSAGE "Client : Message is null\n"
+# define BAD_ARG "Client : Bad number of arguments (./client [PID] [MSG])\n"
+# define CLI_SIG_ERR "Server : Signal return SIG_ERR\n"
+#endif

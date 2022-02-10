@@ -12,6 +12,17 @@
 
 #include "libft.h"
 
+static const char	*ft_check_args(const char *s1, const char *s2)
+{
+	if (!s1 && !s2)
+		return (0);
+	else if (!s1)
+		return (s2);
+	else if (!s2)
+		return (s1);
+	return (0);
+}
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	int		i;
@@ -20,6 +31,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return ((char *) ft_check_args(s1, s2));
 	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (res == 0)
 		return (0);
@@ -29,11 +42,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		i++;
 	}
 	while (s2[j])
-	{
-		res[i] = s2[j];
-		i++;
-		j++;
-	}
+		res[i++] = s2[j++];
 	res[i] = 0;
 	return (res);
 }
