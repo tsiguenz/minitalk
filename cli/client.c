@@ -19,10 +19,10 @@ int	ft_send_null(pid_t pid)
 	i = 0;
 	while (i < 8)
 	{
+		usleep(100);
 		if (kill(pid, SIGUSR1) == -1)
 			return (ft_printf(ERROR_KILL));
 		i++;
-		usleep(3);
 	}
 	return (0);
 }
@@ -47,12 +47,11 @@ int	ft_send_sig(int pid, char *str)
 				if (kill(pid, SIGUSR1) == -1)
 					return (ft_printf(ERROR_KILL));
 			bitshift++;
-			usleep(5);
+			usleep(100);
 		}
 		str++;
 	}
-	if (0)
-		ft_send_null(pid);
+	ft_send_null(pid);
 	return (0);
 }
 

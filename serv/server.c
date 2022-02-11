@@ -12,13 +12,27 @@
 
 #include "minitalk.h"
 
-char	*ft_addc(char *str, char *c)
+char	*ft_addc(char *str, char c)
 {
-	char	*tmp;
+	char	*ret;
+	int		len;
 
-	tmp = ft_strjoin(str, c);
+	if (!str)
+	{
+		ret = ft_calloc(2, sizeof(char));
+		if (!ret)
+			return (0);
+		ret[0] = c;
+		return (ret);
+	}
+	len = ft_strlen(str);
+	ret = ft_calloc(len + 2, sizeof(char));
+	if (!ret)
+		return (0);
+	ft_strlcpy(ret, str, len + 1);
+	ret[len] = c;
 	free(str);
-	return (tmp);	
+	return (ret);
 }
 
 void	ft_handler(int sig)
@@ -35,19 +49,17 @@ void	ft_handler(int sig)
 	else if (sig == SIGUSR1)
 		c <<= 1;
 	i++;
-	ft_print_bin("bin = ", c);
-	if (i >= 8)
+	if (i == 8)
 	{
-		//ft_print_bin("bin = ", c);
 		if (c)
-			str = ft_addc(str, &c);
+			str = ft_addc(str, c);
 		else
 		{
 			ft_printf("%s\n", str);
 			free(str);
+			str = 0;
 		}
 		i = 0;
-		c = 0;
 	}
 }
 

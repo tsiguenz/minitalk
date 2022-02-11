@@ -37,11 +37,11 @@ INC = -I../include
 
 $(NAME): $(OBJ)
 	@echo "Build server"
-	@$(CC) $(CFLAGS) $(OBJ) $(INC) $(LIBFT) -o $(NAME)
+	@$(CC) -o $(CFLAGS) $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p obj
-	@$(CC) $(CFLAGS) $(INC) -I../libft -o $@ -c $<
+	@$(CC) -o $(CFLAGS) $(INC) -I../libft -o $@ -c $<
 
 all: $(NAME)
 
