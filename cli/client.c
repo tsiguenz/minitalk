@@ -6,7 +6,7 @@
 /*   By: tsiguenz <tsiguenz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:55:29 by tsiguenz          #+#    #+#             */
-/*   Updated: 2022/02/08 18:43:04 by tsiguenz         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:40:00 by tsiguenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_send_null(pid_t pid)
 	i = 0;
 	while (i < 8)
 	{
-		usleep(100);
+		usleep(50);
 		if (kill(pid, SIGUSR1) == -1)
 			return (ft_printf(ERROR_KILL));
 		i++;
@@ -47,7 +47,7 @@ int	ft_send_sig(int pid, char *str)
 				if (kill(pid, SIGUSR1) == -1)
 					return (ft_printf(ERROR_KILL));
 			bitshift++;
-			usleep(100);
+			usleep(50);
 		}
 		str++;
 	}
