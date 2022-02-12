@@ -6,7 +6,7 @@
 /*   By: tsiguenz <tsiguenz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:55:29 by tsiguenz          #+#    #+#             */
-/*   Updated: 2022/02/11 19:40:00 by tsiguenz         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:27:06 by tsiguenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	ft_send_sig(int pid, char *str)
 {
 	int	bitshift;
 
-	if (!str)
-		return (ft_printf(ERROR_NULL_MESSAGE));
+	if (!str || !pid)
+		return (ft_printf(ERROR_PID));
 	while (*str)
 	{
 		bitshift = 0;
