@@ -5,3 +5,4 @@ Errors :
   <LI>Print (null) when pass ""<LI\>
   <LI>Leaks when malloc fail<LI\>
   <LI>Usleep too small with string of 10k caracter<LI\>
+  <LI>All PID are accepted : -1 close all windows :(
